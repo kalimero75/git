@@ -2,8 +2,6 @@ from pytube import YouTube
 import urllib.request
 import re
 import os
-import glob
-import shutil
 
 # Text Formatierungen
 RESET = '\033[0m'
