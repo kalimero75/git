@@ -1,0 +1,19 @@
+5. Munin
+Munin ist ein Netzwerk-Überwachungs-Tool, das auf Plugins basiert und umfangreiche Graphen zur Visualisierung der Server-Performance bietet, einschließlich Apache.
+
+Installation:
+
+bash
+Code kopieren
+sudo apt install munin munin-node
+Apache-Plugin aktivieren:
+
+bash
+Code kopieren
+sudo ln -s /usr/share/munin/plugins/apache_accesses /etc/munin/plugins/apache_accesses
+sudo ln -s /usr/share/munin/plugins/apache_processes /etc/munin/plugins/apache_processes
+sudo ln -s /usr/share/munin/plugins/apache_volume /etc/munin/plugins/apache_volume
+sudo systemctl restart munin-node
+Webinterface anzeigen:
+Die Graphen sind normalerweise unter http://localhost/munin zugänglich.
+
