@@ -1,0 +1,20 @@
+#!/bin/bash
+
+LOGFILE="/var/log/apache2/access.log"
+ERRORLOG="/var/log/apache2/error.log"
+
+# Check for 404 errors
+tail -n 1000 $LOGFILE | grep " 404 " > /tmp/404_errors.log
+
+# Check for other errors
+tail -n 1000 $ERRORLOG > /tmp/apache_errors.log
+
+# Send an email if there are 404 errors
+if [ -s /tmp/404_errors.log ]; then
+    mail -s "Apache 404 Errors Detected" your-email@example.com < /tmp/404_errors.log
+fi
+
+# Send an email if there are other errors
+if [ -s /tmp/apache_errors.log ]; then
+    mail -s "Apache Errors Detected" your-email@example.com < /tmp/apache_errors.log
+fi
